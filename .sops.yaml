@@ -1,0 +1,12 @@
+keys:
+  - &sekai age1ggaagfgxr59gxcmstcc8vpvenz7jflz4de3tj23ek0gf869av5eq45atmr
+
+creation_rules:
+  - path_regex: openstack_secrets.yaml
+    key_groups:
+      - age:
+          - *sekai
+  - path_regex: kelpie/secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *sekai
