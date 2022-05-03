@@ -3,3 +3,7 @@ result*
 config.tf.json
 sekai_ed.pub
 sekai_ed
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup

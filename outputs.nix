@@ -3,12 +3,17 @@
 , flake-utils
 , terranix
 , module-openstack
+, nur
 , sops-nix
 , ...
 } @ inputs:
 (flake-utils.lib.eachDefaultSystem (system:
   let
     pkgs = nixpkgs.legacyPackages.${system};
+    nurPkgs = import nur {
+      inherit pkgs;
+      nurpkgs = pkgs;
+    };
     terraform = pkgs.writers.writeBashBin "terraform" ''
       ${pkgs.terraform}/bin/terraform "$@"
     '';
@@ -21,24 +26,15 @@
     };
   in
     {
-      defaultPackage = terranixConfiguration;
-
-      # conf = nixpkgs.lib.nixosSystem {
-      #   inherit system;
-      #   modules = [
-      #     ./config.nix
-      #     sops-nix.nixosModules.sops
-      #   ];
-      # };
-      
+      defaultPackage = terranixConfiguration;      
       # nix develop
       devShell = pkgs.mkShell {
         buildInputs =
           [ terraform terranix.defaultPackage.${system} ];
       };
     })) // {
-      # nixosConfigurations = import ./config.nix (inputs // {
-      #   inherit inputs;
-      # });
+      nixosConfigurations = import ./nixos/configuration.nix (inputs // {
+        inherit inputs;
+      });
     }
 
