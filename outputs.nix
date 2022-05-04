@@ -10,7 +10,7 @@
 } @ inputs:
 (flake-utils.lib.eachDefaultSystem (system:
   let
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = nixpkgs.legacyPackages."${system}";
     nurPkgs = import nur {
       inherit pkgs;
       nurpkgs = pkgs;
@@ -30,8 +30,10 @@
       defaultPackage = terranixConfiguration;      
       # nix develop
       devShell = pkgs.mkShell {
-        buildInputs =
-          [ terraform terranix.defaultPackage.${system} ];
+        buildInputs = [
+          terraform terranix.defaultPackage.${system}
+          deploy-rs.packages.${system}.deploy-rs
+        ];
       };
     })) // {
       nixosConfigurations = import ./nixos/configuration.nix (inputs // {
@@ -40,7 +42,6 @@
       deploy = import ./nixos/deploy.nix (inputs // {
         inherit inputs;
       });
-
       # This is highly advised, and will prevent many possible mistakes
       checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     }

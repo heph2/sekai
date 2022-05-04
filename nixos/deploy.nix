@@ -4,7 +4,7 @@
 }:
 let
   mkNode = server: ip: fast: {
-    hostname = "${ip}:22";
+    hostname = "${ip}";
     fastConnection = fast;
     profiles.system.path =
       deploy-rs.lib.x86_64-linux.activate.nixos
@@ -15,8 +15,10 @@ in
 {
   user = "root";
   sshUser = "root";
+  sshOpts = [ "-i" "~/.ssh/sekai_ed" ];
   nodes = {
-    kelpie = mkNode "kelpie" hosts.kelpie.host.ipv4 true;
-    axel = mkNode "axel" hosts.axel.host.ipv4 true;
+    #kelpie = mkNode "kelpie" hosts.kelpie.host.ipv4 true;
+    #    axel = mkNode "axel" hosts.axel.host.ipv4 true;
+    kelpie = mkNode "kelpie" "90.147.157.124" true;
   };
 }

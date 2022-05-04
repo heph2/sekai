@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
-  sops.secrets."pounce/CApem" = {};
-  sops.secrets."pounce/key" = {};
-  sops.secrets."pounce/cert" = {};
-  sops.secrets."pounce/certFP" = {};
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.secrets."pounce/CApem" = { };
+  sops.secrets."pounce/key" = { };
+  sops.secrets."pounce/cert" = { };
+  sops.secrets."pounce/certFP" = { };
   services.pounce = {
     enable = true;
     hostAddress = ""; # VPN IP
