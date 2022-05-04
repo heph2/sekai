@@ -16,6 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
+    inputs.deploy-rs.url = "github:serokell/deploy-rs";
   };
   outputs = { ... } @ args: import ./outputs.nix args;
 }

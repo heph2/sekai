@@ -5,6 +5,7 @@
 , module-openstack
 , nur
 , sops-nix
+, deploy-rs
 , ...
 } @ inputs:
 (flake-utils.lib.eachDefaultSystem (system:
@@ -36,5 +37,11 @@
       nixosConfigurations = import ./nixos/configuration.nix (inputs // {
         inherit inputs;
       });
+      deploy = import ./nixos/deploy.nix (inputs // {
+        inherit inputs;
+      });
+
+      # This is highly advised, and will prevent many possible mistakes
+      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     }
 

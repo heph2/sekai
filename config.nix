@@ -1,4 +1,9 @@
 { config, lib, pkgs, inputs,... }:
+
+let
+  costumGroup = "c5e4d2ed-6f5b-4efe-831f-5ae93010fe4a";
+  defaultId = "fe0de0e1-cf81-4d6f-b1f1-f1ecc42d07bb"; 
+in
 {
   ## Enable sops provider
   terraform.required_providers.sops.source = "carlpett/sops";
@@ -13,8 +18,8 @@
     enable = true;
     provider = {
       authUrl = "https://keystone.cloud.garr.it:5000/v3";
-      credId = "\${data.sops_file.openstack.data[\"openstack.app_id\"]}";
-      credSecret = "\${data.sops_file.openstack.data[\"openstack.sec_id\"]}";
+      credId = ''''${data.sops_file.openstack.data["openstack.app_id"]}'';
+      credSecret = ''''${data.sops_file.openstack.data["openstack.sec_id"]}'';
       region = "garr-pa1";
     };
     server = {
@@ -30,9 +35,9 @@
         enable = true;
         name = "axel";
         image = "NixOS 21 11";
-        flavor = "m1.medium";
-        networkId = "fe0de0e1-cf81-4d6f-b1f1-f1ecc42d07bb";
-        securityGroups = ["c5e4d2ed-6f5b-4efe-831f-5ae93010fe4a"];        
+        flavor = "m1.medium"; # 4GB Ram, 2vCPU, 80GB Storage
+        networkId = defaultId;
+        securityGroups = [ costumGroup ];        
       };
     };
 
