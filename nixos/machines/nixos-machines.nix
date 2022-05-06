@@ -17,9 +17,9 @@ axel = {
 
 kelpie = {
   host = {
-    ipv4 = "192.168.1.200";
+    ipv4 = "192.168.5.145";
     ipv6 = "";
-    ipv4-floating = "192.168.1.200";
+    ipv4-floating = "";
   };
   location = "garr-pa1";
 };

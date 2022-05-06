@@ -18,6 +18,7 @@
     nur.url = "github:nix-community/NUR";
     deploy-rs.url = "github:serokell/deploy-rs";
     nix.url = "github:NixOS/nix/2.5.1";
+    blog-flake.url = "github:heph2/blog";
   };
   outputs = { ... } @ args: import ./outputs.nix args;
 }

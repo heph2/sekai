@@ -3,7 +3,7 @@
   imports = [
     #    ./modules/pounce.nix
     #    ./modules/wg.nix
-    # <nixpkgs/nixos/modules/virtualisation/openstack-config.nix>
+    <nixpkgs/nixos/modules/virtualisation/openstack-config.nix>
     ./modules/blog.nix
   ];
 

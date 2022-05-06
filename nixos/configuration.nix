@@ -4,6 +4,7 @@
 , inputs
 , nix
 , nur
+, blog-flake
 , ...
 }:
 let
@@ -26,6 +27,7 @@ let
         })
         ../modules/base.nix
         sops-nix.nixosModules.sops
+        blog-flake.defaultPackage.x86_64-linux.out
       ];
     }
   ];
@@ -37,7 +39,6 @@ in
       defaultModules
       ++ [
         ./kelpie/configuration.nix
-        ../modules/base-openstack.nix
       ];
   };
 }

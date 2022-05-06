@@ -19,6 +19,6 @@ in
   nodes = {
     #kelpie = mkNode "kelpie" hosts.kelpie.host.ipv4 true;
     #    axel = mkNode "axel" hosts.axel.host.ipv4 true;
-    kelpie = mkNode "kelpie" "90.147.157.124" true;
+    kelpie = mkNode "kelpie" "90.147.189.232" true;
   };
 }
