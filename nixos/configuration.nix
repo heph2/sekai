@@ -26,8 +26,7 @@ let
           documentation.info.enable = false;          
         })
         ../modules/base.nix
-        sops-nix.nixosModules.sops
-        blog-flake.defaultPackage.x86_64-linux.out
+        sops-nix.nixosModules.sops        
       ];
     }
   ];

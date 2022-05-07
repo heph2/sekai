@@ -1,4 +1,4 @@
-{ config, pkgs, lib, blog-flake, ... }:
+{ config, pkgs, lib, inputs, ... }:
 {
   services = {
     nginx = {
@@ -6,7 +6,7 @@
       virtualHosts."www.pek.mk" = {
         enableACME = true;
         forceSSL = true;
-#        root = blog-flake.defaultPackage.x86_64-linux.out;
+        root = "${inputs.blog-flake.defaultPackage.x86_64-linux}";
       };
     };
   };
