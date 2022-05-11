@@ -6,6 +6,10 @@ creation_rules:
     key_groups:
       - age:
           - *sekai
+  - path_regex: oci_secrets.yaml
+    key_groups:
+      - age:
+          - *sekai
   - path_regex: kelpie/secrets/[^/]+\.yaml$
     key_groups:
       - age:

@@ -70,11 +70,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1651753480,
-        "narHash": "sha256-EsHUuRGwHahXVAblAjaKueLXxAZNevau8pLHooyxfgQ=",
+        "lastModified": 1652258298,
+        "narHash": "sha256-JtfnvYp7JCx193zMokDAWu0Yyv+yycAM0YEYLD9eHRU=",
         "owner": "heph2",
         "repo": "blog",
-        "rev": "06c2fc0d8b8509c95a79a541b5acea53d4fb26f9",
+        "rev": "dabac6af13ae69a94b95d9b69c54ae60081bb90d",
         "type": "github"
       },
       "original": {

@@ -19,7 +19,7 @@ kelpie = {
   host = {
     ipv4 = "192.168.5.145";
     ipv6 = "";
-    ipv4-floating = "";
+    ipv4-floating = "192.168.5.145";
   };
   location = "garr-pa1";
 };
