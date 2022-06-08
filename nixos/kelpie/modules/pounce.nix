@@ -1,21 +1,38 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, nur, ... }:
 {
-  sops.defaultSopsFile = ../secrets/secrets.yaml;
-  sops.secrets."pounce/CApem" = { };
-  sops.secrets."pounce/key" = { };
-  sops.secrets."pounce/cert" = { };
-  sops.secrets."pounce/certFP" = { };
+  # imports =
+  #   [
+  #     nur.repos.heph2.modules.pounce
+  #   ];
+
   services.pounce = {
     enable = true;
-    hostAddress = ""; # VPN IP
+    hostAddress = "0.0.0.0"; # VPN IP
     hostPort = 6697;
-    joinChannels = [ "#gemini.it" ];
+    joinChannels = [ "#gemini-it" ];
     ircHost = "irc.libera.chat";
     ircUser = "tako";
     ircNick = "tako";
-    sslCa = sops.secrets."pounce/CApem".path;
-    sslKey = sops.secrets."pounce/key".path;
-    sslCert = sops.secrets."pounce/cert".path;
-    certFP = sops.secrets."pounce/certFP".path;
+    sslCa = config.sops.secrets."pounce/CApem".path;
+    sslKey = config.sops.secrets."pounce/key".path;
+    sslCert = config.sops.secrets."pounce/cert".path;
+    certFP = config.sops.secrets."pounce/certFP".path;
+  };
+  
+  sops.secrets."pounce/CApem" = {
+    owner = "pounce";
+    mode = "0644";
+  };
+  sops.secrets."pounce/key" = {
+    owner = "pounce";
+    mode = "0644";
+  };
+  sops.secrets."pounce/cert" = {
+    owner = "pounce";
+    mode = "0644";
+  };
+  sops.secrets."pounce/certFP" = {
+    owner = "pounce";
+    mode = "0644";
   };
 }

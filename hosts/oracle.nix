@@ -20,16 +20,27 @@ in
     ad_number = 1;
   };
 
-  data.oci_core_images.ubuntu-20-04 = {
+  data.oci_core_images.ubuntu-20-04-arm = {
     compartment_id = ''''${data.sops_file.oci.data["oci.tenancy"]}'';
     operating_system = "Canonical Ubuntu";
-    filter = {
-      name = "display_name";
-      values = ["^Canonical-Ubuntu-20.04-([\\.0-9-]+)$"];
-      regex = true;
-    };
+    operating_system_version = "20.04";
+    shape = armFree;
   };
 
+  data.oci_core_images.ol7 = {
+    compartment_id = ''''${data.sops_file.oci.data["oci.tenancy"]}'';
+    operating_system = "Oracle Linux";
+    operating_system_version = "7.9";
+    shape = amdFree;
+  };
+
+  data.oci_core_images.ol7_arm = {
+    compartment_id = ''''${data.sops_file.oci.data["oci.tenancy"]}'';
+    operating_system = "Oracle Linux";
+    operating_system_version = "7.9";
+    shape = armFree;
+  };
+  
   ## Retrieve subnet
   data.oci_core_subnet.default_sub = {
     subnet_id = subnetDefaultOci;
@@ -63,7 +74,7 @@ in
 
     source_details = {
       source_type = "image";
-      source_id   = "ocid1.image.oc1.eu-milan-1.aaaaaaaakv4wkaruajtxpwoben4terryml4lr3wtnpb5hz74mawsexsge2wa";
+      source_id = ''''${data.oci_core_images.ol7.images.0.id}'';
     };
 
     metadata.ssh_authorized_keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCmIz2Selg5eJ77lvpJHgDJiRIOZbucMjDK5zrhTEWK heph@fenrir";
@@ -86,7 +97,7 @@ in
 
     source_details = {
       source_type = "image";
-      source_id   = "ocid1.image.oc1.eu-milan-1.aaaaaaaakv4wkaruajtxpwoben4terryml4lr3wtnpb5hz74mawsexsge2wa";
+      source_id = ''''${data.oci_core_images.ol7.images.0.id}'';
     };
 
     metadata.ssh_authorized_keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCmIz2Selg5eJ77lvpJHgDJiRIOZbucMjDK5zrhTEWK heph@fenrir";
@@ -114,7 +125,7 @@ in
 
     source_details = {
       source_type = "image";
-      source_id   = "ocid1.image.oc1.eu-milan-1.aaaaaaaaw464vt2qrvyzcijpigazclfqh6k2gcm7b5ou4xljrqrem4p6m4tq";
+      source_id = ''''${data.oci_core_images.ubuntu-20-04-arm.images.0.id}'';
     };
 
     metadata.ssh_authorized_keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCmIz2Selg5eJ77lvpJHgDJiRIOZbucMjDK5zrhTEWK heph@fenrir";
@@ -142,7 +153,7 @@ in
 
     source_details = {
       source_type = "image";
-      source_id   = "ocid1.image.oc1.eu-milan-1.aaaaaaaaw464vt2qrvyzcijpigazclfqh6k2gcm7b5ou4xljrqrem4p6m4tq";
+      source_id = ''''${data.oci_core_images.ubuntu-20-04-arm.images.0.id}'';
     };
 
     metadata.ssh_authorized_keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCmIz2Selg5eJ77lvpJHgDJiRIOZbucMjDK5zrhTEWK heph@fenrir";

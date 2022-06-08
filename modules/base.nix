@@ -16,6 +16,4 @@
   environment.systemPackages = with pkgs; [
     wget openssh
   ];
-
-  systemd.services.openstack-init.enable = lib.mkForce false;
 }
