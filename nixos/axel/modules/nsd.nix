@@ -23,6 +23,7 @@ upload	    300	  IN	A 	90.147.189.89
 voice	    300	  IN	A	129.152.11.177
       '';      
     }; # pek.mk
+    
     zones."heph.me" = {
       dnssec = false;
       data = ''
@@ -33,9 +34,24 @@ $TTL 600
 @ 300 IN NS ns1.heph.me.
 @ 300 IN NS ns2.heph.me.
 
+ns1         300 IN  A 90.147.189.89
+ns2         300 IN  A 90.147.189.89
 www   	    300	IN	A	90.147.189.232
       '';
     }; # heph.me
+
+    zones."oho.lab" = {
+      data = ''
+@ 3600 IN SOA oho.lab. oho2.lab. 2022042908 7200 3600 86400 3600
+
+$TTL 600
+
+@ 300 IN NS	oho.lab.
+@ 300 IN NS oho2.lab.
+
+oho.lab. IN A 172.18.0.5
+'';
+    }; # Lab
   };
 
   networking.extraHosts = "90.147.189.232 ns1.pek.mk ns2.pek.mk ns1.heph.me ns2.heph.me";

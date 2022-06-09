@@ -3,7 +3,7 @@
   imports = [
     ./modules/prosody.nix
     #    ./modules/knot.nix
-    ./modules/nsd.nix
+    #    ./modules/nsd.nix
   ];
 
   networking = {
@@ -18,6 +18,6 @@
   time.timeZone = "Europe/Rome";
 
   environment.systemPackages = with pkgs; [
-    dnsutils
+    dnsutils tcpdump
   ];
 }

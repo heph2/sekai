@@ -1,7 +1,4 @@
 { config, pkgs, lib, ... }:
-let
-#  ip4 = config.networking.axel.ipv4.address;
-in
 {
   services.knot = {
     enable = true;
@@ -37,5 +34,10 @@ in
         - domain: heph.me
           file: "${./heph.me.zone}"
     '';
+  };
+
+  networking.firewall = {
+    allowedTCPPorts = [ 53 ];
+    allowedUDPPorts = [ 53 ];
   };
 }

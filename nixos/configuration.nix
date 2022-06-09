@@ -41,6 +41,7 @@ in
         ./kelpie/configuration.nix
       ] ++ [
         ../modules/base-openstack.nix
+        ../modules/dns/knot.nix
       ] ++ [
         { nixpkgs.overlays = [ nur.overlay ]; }
         ({ pkgs, ... }:
@@ -63,6 +64,7 @@ in
       ] ++ [
         ../modules/base-openstack.nix
         ../modules/wireguard-client.nix
+        ../modules/dns/knot.nix
       ];
   };
   
