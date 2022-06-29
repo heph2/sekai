@@ -1,3 +1,4 @@
+
 { self
 , nixpkgs
 , sops-nix
@@ -5,6 +6,7 @@
 , nix
 , nur
 , blog-flake
+, nixos-hardware
 , ...
 }:
 let
@@ -27,7 +29,7 @@ let
         })
         ../modules/base.nix
         ../modules/nur.nix
-        sops-nix.nixosModules.sops        
+        sops-nix.nixosModules.sops
       ];
     }
   ];
@@ -113,6 +115,15 @@ in
 #        ../modules/base-oracle.nix
       ];    
   };
-  
+
+  sp4 = nixosSystem {
+    system = "x86_64-linux";
+    modules =
+      defaultModules
+      ++ [
+        ./sp4/configuration.nix
+        nixos-hardware.nixosModules.microsoft-surface-pro-3
+      ];
+  };  
 }
 

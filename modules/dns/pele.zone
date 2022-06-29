@@ -1,0 +1,10 @@
+@ 3600 IN SOA oho.pele. oho2.pele. 2022060940 7200 3600 86400 3600
+
+$TTL 600
+$ORIGIN pele.
+
+@ 300 IN NS oho.pele.
+@ 300 IN NS oho2.pele.
+
+oho.pele.	IN A 172.18.0.1
+ciao.pele.	IN A 172.18.0.5

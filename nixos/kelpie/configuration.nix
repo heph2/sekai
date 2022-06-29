@@ -22,6 +22,9 @@
     allowedTCPPorts = [ 22 80 443 6697 ];
     allowedUDPPorts = [ 51820 ];
   };
-  
+
+  environment.systemPackages = with pkgs; [
+    dnsutils tcpdump
+  ];
   system.stateVersion = "21.11";
 }

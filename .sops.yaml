@@ -1,6 +1,7 @@
 keys:
   - &sekai age1ggaagfgxr59gxcmstcc8vpvenz7jflz4de3tj23ek0gf869av5eq45atmr
   - &server_kelpie age1c7xtmv7npgl69d0stpd2uyng6mmk5qdnvqtghs0crwfulgzf5d2stv5pkm
+  - &server_axel age17ymlcg52xfquk3w0ej9rr34eywzqpfn2a8ngcgujxqz0hztdkgsq53zxla
 
 creation_rules:
   - path_regex: openstack_secrets.yaml
@@ -16,3 +17,15 @@ creation_rules:
       - age:
           - *sekai
           - *server_kelpie
+
+  - path_regex: modules/dns/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *sekai
+          - *server_kelpie
+
+  - path_regex: axel/secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *sekai
+          - *server_axel

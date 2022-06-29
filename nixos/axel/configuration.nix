@@ -2,10 +2,10 @@
 {
   imports = [
     ./modules/prosody.nix
-    #    ./modules/knot.nix
-    #    ./modules/nsd.nix
+    ./modules/acme.nix
   ];
 
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
   networking = {
     firewall = {
       enable = true;
@@ -21,3 +21,5 @@
     dnsutils tcpdump
   ];
 }
+
+  
