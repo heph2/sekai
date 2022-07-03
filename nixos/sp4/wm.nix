@@ -43,8 +43,14 @@ in
     wrapperFeatures.gtk = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    dbus-sway-environment
+    configure-gtk
+  ];
+
   services = {
     xserver = {
+      enable = true;
       displayManager = {
         lightdm.enable = true;
         autoLogin.enable = true;

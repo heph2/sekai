@@ -73,10 +73,7 @@
     heph = {
       isNormalUser = true;
       description = "heph";
-      extraGroups = [ "networkmanager" "wheel" "video" ];
-      packages = with pkgs; [
-        firefox
-      ];      
+      extraGroups = [ "networkmanager" "wheel" "video" "input" ];
     };
     root.openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCmIz2Selg5eJ77lvpJHgDJiRIOZbucMjDK5zrhTEWK heph@fenrir"
@@ -92,26 +89,76 @@
       supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
     }];
     distributedBuilds = true;
+    package = pkgs.nixFlakes;
     extraOptions = ''
       builders-use-substitutes = true
+      keep-outputs = true
+      keep-derivations = true
+      experimental-features = nix-command flakes
     '';
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 3d";
+    };
   };
+
+  environment.pathsToLink = [
+    "/share/nix-direnv"
+  ];
+
+  nixpkgs.overlays = [
+    (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
+  ];
+  
+  fonts.fonts = with pkgs; [
+    font-awesome
+  ];
   
   environment.systemPackages = with pkgs; [
     # Editor
     neovim emacs
 
-    # Terminal emulator
-    alacritty
+    # Terminal emulator & Shell
+    alacritty foot zsh
 
     # Window Manager & Sway things
-    sway dbus-sway-environment configure-gtk wayland
-    glib dracula-theme gnome3.adwaita-icon-theme
-    swaylock swayidle bemenu mako i3status
+    sway wayland waybar nwg-launchers swaybg swaylock 
+    glib dracula-theme gnome3.adwaita-icon-theme swayidle
+    swaylock swayidle bemenu mako i3status rofi-wayland rofi-power-menu
 
+    # Gestures
+    libinput-gestures wmctrl xdotool
+    
     # Screenshot & Clipboard
-    grim slurp wl-clipboard     
+    grim slurp wl-clipboard
+
+    # Browser
+    firefox-wayland
+
+    # Notes
+    xournalpp
+
+    # Chat
+    tdesktop nheko
+
+    # CLI Stuff
+    git imv zathura
+
+    # Audio stuff
+    pulseaudio pamixer wob
+
+    # Nix stuff
+    nix-direnv direnv
   ];
 
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    XDG_CURRENT_DESKTOP = "sway";
+  };
+
+  environment.loginShellInit = ''
+    [[ "$(tty)" == /dev/tty? ]] && sudo /run/current-system/sw/bin/lock this
+    [[ "$(tty)" == /dev/tty1 ]] && sway
+  '';
   system.stateVersion = "22.05";
 }
