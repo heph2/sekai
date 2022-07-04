@@ -47,7 +47,6 @@
 
   # Enable CUPS to print documents.
   services = {
-    printing.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -60,11 +59,22 @@
       enable = true;
       permitRootLogin = "prohibit-password";
     };
+
+    printing = {
+      enable = true;
+      drivers = [ pkgs.brlaser ];
+    };
   };
 
   # Enable sound
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  hardware = {
+    pulseaudio.enable = false;
+    sane.enable = true;
+    ## Bluetooth support
+#    bluetooth.enable = true;
+#    bluetooth.package = pkgs.bluezFull;    
+  };
   security.rtkit.enable = true;
   programs.light.enable = true;
   
@@ -122,18 +132,18 @@
     alacritty foot zsh
 
     # Window Manager & Sway things
-    sway wayland waybar nwg-launchers swaybg swaylock 
+    sway wayland waybar nwg-launchers swaybg swaylock swaylock-effects
     glib dracula-theme gnome3.adwaita-icon-theme swayidle
     swaylock swayidle bemenu mako i3status rofi-wayland rofi-power-menu
 
     # Gestures
-    libinput-gestures wmctrl xdotool
+    libinput-gestures wmctrl xdotool fusuma
     
     # Screenshot & Clipboard
     grim slurp wl-clipboard
 
     # Browser
-    firefox-wayland
+    firefox-wayland telescope
 
     # Notes
     xournalpp
@@ -142,7 +152,7 @@
     tdesktop nheko
 
     # CLI Stuff
-    git imv zathura
+    git imv zathura ytfzf lm_sensors
 
     # Audio stuff
     pulseaudio pamixer wob
@@ -151,6 +161,18 @@
     nix-direnv direnv
   ];
 
+  ## Enable fusuma for touchpad gestures
+  systemd.services."fusuma" = {
+    environment = {
+      DISPLAY = ":0";
+    };
+    enable = true;
+    wantedBy = [ "enable.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig.Restart = "on-failure";
+    serviceConfig.ExecStart = "${pkgs.fusuma}/bin/fusuma -c /home/heph/.config/fusuma/config.yml";
+  };
+  
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
     XDG_CURRENT_DESKTOP = "sway";
