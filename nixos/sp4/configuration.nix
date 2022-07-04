@@ -132,7 +132,7 @@
     alacritty foot zsh
 
     # Window Manager & Sway things
-    sway wayland waybar nwg-launchers swaybg swaylock swaylock-effects
+    sway wayland waybar nwg-launchers swaybg swaylock-effects
     glib dracula-theme gnome3.adwaita-icon-theme swayidle
     swaylock swayidle bemenu mako i3status rofi-wayland rofi-power-menu
 
