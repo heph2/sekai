@@ -69,6 +69,15 @@
   # Enable sound
   sound.enable = true;
   hardware = {
+    opengl = {
+	enable = true;
+	extraPackages = with pkgs; [
+	   intel-media-driver
+	   vaapiIntel
+	   vaapiVdpau
+	   libvdpau-va-gl
+	];
+    };
     pulseaudio.enable = false;
     sane.enable = true;
     ## Bluetooth support
@@ -77,7 +86,8 @@
   };
   security.rtkit.enable = true;
   programs.light.enable = true;
-  
+  programs.gnupg.agent.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     heph = {
@@ -135,6 +145,14 @@
     sway wayland waybar nwg-launchers swaybg swaylock-effects
     glib dracula-theme gnome3.adwaita-icon-theme swayidle
     swaylock swayidle bemenu mako i3status rofi-wayland rofi-power-menu
+    rofi-pass
+
+    # Languages
+    cargo rustc gcc
+    (python3.withPackages (p: with p; [
+    	pip
+	virtualenv
+    ]))
 
     # Gestures
     libinput-gestures wmctrl xdotool fusuma
@@ -152,7 +170,7 @@
     tdesktop nheko
 
     # CLI Stuff
-    git imv zathura ytfzf lm_sensors
+    git imv zathura ytfzf lm_sensors pass pinentry-curses mpv sshfs
 
     # Audio stuff
     pulseaudio pamixer wob
@@ -169,6 +187,7 @@
     enable = true;
     wantedBy = [ "enable.target" ];
     after = [ "graphical-session.target" ];
+    serviceConfig.User = "heph"; 
     serviceConfig.Restart = "on-failure";
     serviceConfig.ExecStart = "${pkgs.fusuma}/bin/fusuma -c /home/heph/.config/fusuma/config.yml";
   };
