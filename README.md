@@ -43,3 +43,11 @@ For deploying:
 	$ deploy '.#sp4' -- --impure -j0
 
 I'm only using the -j0 flag only when i'm building from the sp4 itself, which has very poor performance in terms of compiling, so i'm building all the stuff directly using the Desktop (which isn't in the flake).
+
+### Kelpie (GARR)
+
+This is a VPS offered by GARR as a student, and it's serving as a web server for my blog, as a wireguard server, pounce
+server and also as a nameserver for my domains.
+
+	$ deploy '.#kelpie' -- --impure
+
