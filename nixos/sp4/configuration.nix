@@ -87,6 +87,11 @@
   security.rtkit.enable = true;
   programs.light.enable = true;
   programs.gnupg.agent.enable = true;
+  programs.steam = {
+	enable = true;
+	remotePlay.openFirewall = true;
+	dedicatedServer.openFirewall = true;
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
@@ -167,7 +172,7 @@
     xournalpp
 
     # Chat
-    tdesktop nheko
+    tdesktop element-desktop-wayland
 
     # CLI Stuff
     git imv zathura ytfzf lm_sensors pass pinentry-curses mpv sshfs
@@ -177,6 +182,9 @@
 
     # Nix stuff
     nix-direnv direnv
+
+    # Games
+    steam-run
   ];
 
   ## Enable fusuma for touchpad gestures

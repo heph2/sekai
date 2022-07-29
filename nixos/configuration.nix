@@ -43,7 +43,8 @@ in
         ./kelpie/configuration.nix
       ] ++ [
         ../modules/base-openstack.nix
-        ../modules/dns/knot.nix
+#        ../modules/dns/knot.nix
+	../modules/dns/bind.nix
       ] ++ [
         { nixpkgs.overlays = [ nur.overlay ]; }
         ({ pkgs, ... }:
