@@ -77,6 +77,7 @@
 	   vaapiVdpau
 	   libvdpau-va-gl
 	];
+	driSupport32bit = true;
     };
     pulseaudio.enable = false;
     sane.enable = true;
@@ -135,6 +136,12 @@
     (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
   ];
   
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steam"
+    "steam-original"
+    "steam-runtime"
+  ];
+
   fonts.fonts = with pkgs; [
     font-awesome
   ];
