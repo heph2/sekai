@@ -77,7 +77,7 @@
 	   vaapiVdpau
 	   libvdpau-va-gl
 	];
-	driSupport32bit = true;
+	driSupport32Bit = true;
     };
     pulseaudio.enable = false;
     sane.enable = true;
