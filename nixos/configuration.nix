@@ -7,6 +7,7 @@
 , nur
 , blog-flake
 , nixos-hardware
+, home-manager
 , ...
 }:
 let
@@ -124,6 +125,12 @@ in
       ++ [
         ./sp4/configuration.nix
         nixos-hardware.nixosModules.microsoft-surface-pro-3
+	home-manager.nixosModules.home-manager
+	{
+	  home-manager.useGlobalPkgs = true;
+	  home-manager.useUserPackages = true;
+	  home-manager.users.heph = import ./sp4/home.nix;
+	}
       ];
   };  
 }

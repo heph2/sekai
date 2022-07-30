@@ -20,6 +20,10 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix.url = "github:NixOS/nix/2.5.1";
     blog-flake.url = "github:heph2/blog";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
