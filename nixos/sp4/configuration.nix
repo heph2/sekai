@@ -216,24 +216,24 @@
     pulseaudio pamixer wob
 
     # Nix stuff
-    nix-direnv direnv
+    nix-direnv direnv home-manager
 
     # Games
     steam-run
   ];
 
   ## Enable fusuma for touchpad gestures
-  systemd.services."fusuma" = {
-    environment = {
-      DISPLAY = ":0";
-    };
-    enable = true;
-    wantedBy = [ "enable.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig.User = "heph"; 
-    serviceConfig.Restart = "on-failure";
-    serviceConfig.ExecStart = "${pkgs.fusuma}/bin/fusuma -c /home/heph/.config/fusuma/config.yml";
-  };
+  #systemd.services."fusuma" = {
+  #  environment = {
+  #    DISPLAY = ":0";
+  #  };
+  #  enable = true;
+  #  wantedBy = [ "enable.target" ];
+  #  after = [ "graphical-session.target" ];
+  #  serviceConfig.User = "heph"; 
+  #  serviceConfig.Restart = "on-failure";
+  #  serviceConfig.ExecStart = "${pkgs.fusuma}/bin/fusuma -c /home/heph/.config/fusuma/config.yml";
+  #};
   
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
