@@ -122,6 +122,7 @@
 	dedicatedServer.openFirewall = true;
   };
 
+  programs.ssh.startAgent = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     heph = {
@@ -204,13 +205,14 @@
     firefox-wayland telescope
 
     # Notes
-    xournalpp
+    xournalpp rnote
 
     # Chat
     tdesktop element-desktop-wayland
 
     # CLI Stuff
     git imv zathura ytfzf lm_sensors pass pinentry-curses mpv sshfs
+    texlive.combined.scheme-basic
 
     # Audio stuff
     pulseaudio pamixer wob
