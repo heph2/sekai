@@ -305,6 +305,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-sp4": {
+      "locked": {
+        "lastModified": 1660574513,
+        "narHash": "sha256-nkMQ1TKIIAYIVbbUzjxfjPn3H1zZFW20TrHUFAjwvNU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "af9e00071d0971eb292fd5abef334e66eda3cb69",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1648387873,
@@ -390,6 +405,7 @@
         "nix": "nix",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
+        "nixpkgs-sp4": "nixpkgs-sp4",
         "nur": "nur",
         "sops-nix": "sops-nix",
         "terranix": "terranix_2"

@@ -1,6 +1,7 @@
 
 { self
 , nixpkgs
+, nixpkgs-sp4
 , sops-nix
 , inputs
 , nix
@@ -12,6 +13,7 @@
 }:
 let
   nixosSystem = nixpkgs.lib.makeOverridable nixpkgs.lib.nixosSystem;
+  nixos-sp4 = nixpkgs.lib.makeOverridable nixpkgs-sp4.lib.nixosSystem;
   # make flake inputs accessiable in NixOS
   defaultModules = [
     { _module.args.inputs = inputs; }
@@ -45,7 +47,7 @@ in
       ] ++ [
         ../modules/base-openstack.nix
 #        ../modules/dns/knot.nix
-	../modules/dns/bind.nix
+	      ../modules/dns/bind.nix
       ] ++ [
         { nixpkgs.overlays = [ nur.overlay ]; }
         ({ pkgs, ... }:
@@ -85,9 +87,9 @@ in
 
   thor = nixosSystem {
     system = "x86_64-linux";
-    modules =
-      defaultModules
-      ++ [
+    modules = 
+     defaultModules
+     ++ [
         ./thor/configuration.nix
       ] ++ [
         ../modules/base-oracle.nix
@@ -118,19 +120,20 @@ in
       ];    
   };
 
-  sp4 = nixosSystem {
+  #  sp4 = nixosSystem {
+  sp4 = nixos-sp4 {
     system = "x86_64-linux";
     modules =
       defaultModules
       ++ [
         ./sp4/configuration.nix
         nixos-hardware.nixosModules.microsoft-surface-pro-3
-	home-manager.nixosModules.home-manager
-	{
-	  home-manager.useGlobalPkgs = true;
-	  home-manager.useUserPackages = true;
-	  home-manager.users.heph = import ./sp4/home.nix;
-	}
+	      home-manager.nixosModules.home-manager
+	      {
+	        home-manager.useGlobalPkgs = true;
+	        home-manager.useUserPackages = true;
+	        home-manager.users.heph = import ./sp4/home.nix;
+	      }
       ];
   };  
 }

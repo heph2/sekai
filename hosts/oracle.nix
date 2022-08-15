@@ -74,7 +74,8 @@ in
 
     source_details = {
       source_type = "image";
-      source_id = ''''${data.oci_core_images.ol7.images.0.id}'';
+      #      source_id = ''''${data.oci_core_images.ol7.images.0.id}'';
+      source_id = "ocid1.image.oc1.eu-milan-1.aaaaaaaam2kmk7duocnfopgvypl3kir42hvfe6w3ohfnq7vzppbypfydteuq";
     };
 
     metadata.ssh_authorized_keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCmIz2Selg5eJ77lvpJHgDJiRIOZbucMjDK5zrhTEWK heph@fenrir";
@@ -97,14 +98,14 @@ in
 
     source_details = {
       source_type = "image";
-      source_id = ''''${data.oci_core_images.ol7.images.0.id}'';
+      #      source_id = ''''${data.oci_core_images.ol7.images.0.id}'';
+      source_id = "ocid1.image.oc1.eu-milan-1.aaaaaaaam2kmk7duocnfopgvypl3kir42hvfe6w3ohfnq7vzppbypfydteuq";
     };
 
     metadata.ssh_authorized_keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCmIz2Selg5eJ77lvpJHgDJiRIOZbucMjDK5zrhTEWK heph@fenrir";
     metadata.user_data = ''''${base64encode(file("./hosts/boot-oci.sh"))}'';
   };
 
-  ## ARM Always free resource 1
   resource.oci_core_instance.free_instance_ARM0 = {
     availability_domain = ''''${data.oci_identity_availability_domain.ad.name}'';
     compartment_id = ''''${data.sops_file.oci.data["oci.tenancy"]}'';
@@ -112,8 +113,8 @@ in
     shape = armFree;
 
     shape_config = {
-      memory_in_gbs = "12";
-      ocpus = "2";
+      memory_in_gbs = "24";
+      ocpus = "4";
     };
 
     create_vnic_details = {
@@ -126,38 +127,69 @@ in
     source_details = {
       source_type = "image";
       source_id = ''''${data.oci_core_images.ubuntu-20-04-arm.images.0.id}'';
+     #      source_id = ''''${data.oci_core_images.ol8_arm.images.0.id}'';
+     #      source_id = "ocid1.image.oc1.eu-milan-1.aaaaaaaahuqq5jbok3otbmxaum4musc6bezkdh2t6rbucwvj675oyzihm54q";
+      boot_volume_size_in_gbs = "95";
     };
 
     metadata.ssh_authorized_keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCmIz2Selg5eJ77lvpJHgDJiRIOZbucMjDK5zrhTEWK heph@fenrir";
-    metadata.user_data = ''''${base64encode(file("./hosts/boot-oci.sh"))}'';
+    #    metadata.user_data = ''''${base64encode(file("./hosts/boot-oci.sh"))}'';
   };
+  
+  ## ARM Always free resource 1
+  # resource.oci_core_instance.free_instance_ARM0 = {
+  #   availability_domain = ''''${data.oci_identity_availability_domain.ad.name}'';
+  #   compartment_id = ''''${data.sops_file.oci.data["oci.tenancy"]}'';
+  #   display_name = "odin";
+  #   shape = armFree;
 
-  ## ARM Always free resource 2
-  resource.oci_core_instance.free_instance_ARM1 = {
-    availability_domain = ''''${data.oci_identity_availability_domain.ad.name}'';
-    compartment_id = ''''${data.sops_file.oci.data["oci.tenancy"]}'';
-    display_name = "hod";
-    shape = armFree;
+  #   shape_config = {
+  #     memory_in_gbs = "12";
+  #     ocpus = "2";
+  #   };
 
-    shape_config = {
-      memory_in_gbs = "12";
-      ocpus = "2";
-    };
+  #   create_vnic_details = {
+  #     subnet_id = ''''${data.oci_core_subnet.default_sub.id}'';
+  #     display_name = "primaryvnic";
+  #     assign_public_ip = true;
+  #     hostname_label = "freeinstancearm0";
+  #   };
 
-    create_vnic_details = {
-      subnet_id = ''''${data.oci_core_subnet.default_sub.id}'';
-      display_name = "primaryvnic";
-      assign_public_ip = true;
-      hostname_label = "freeinstancearm1";
-    };
+  #   source_details = {
+  #     source_type = "image";
+  #     source_id = ''''${data.oci_core_images.ubuntu-20-04-arm.images.0.id}'';
+  #   };
 
-    source_details = {
-      source_type = "image";
-      source_id = ''''${data.oci_core_images.ubuntu-20-04-arm.images.0.id}'';
-    };
+  #   metadata.ssh_authorized_keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCmIz2Selg5eJ77lvpJHgDJiRIOZbucMjDK5zrhTEWK heph@fenrir";
+  #   metadata.user_data = ''''${base64encode(file("./hosts/boot-oci.sh"))}'';
+  # };
 
-    metadata.ssh_authorized_keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCmIz2Selg5eJ77lvpJHgDJiRIOZbucMjDK5zrhTEWK heph@fenrir";
-    metadata.user_data = ''''${base64encode(file("./hosts/boot-oci.sh"))}'';
-  };
+  # ## ARM Always free resource 2
+  # resource.oci_core_instance.free_instance_ARM1 = {
+  #   availability_domain = ''''${data.oci_identity_availability_domain.ad.name}'';
+  #   compartment_id = ''''${data.sops_file.oci.data["oci.tenancy"]}'';
+  #   display_name = "hod";
+  #   shape = armFree;
+
+  #   shape_config = {
+  #     memory_in_gbs = "12";
+  #     ocpus = "2";
+  #   };
+
+  #   create_vnic_details = {
+  #     subnet_id = ''''${data.oci_core_subnet.default_sub.id}'';
+  #     display_name = "primaryvnic";
+  #     assign_public_ip = true;
+  #     hostname_label = "freeinstancearm1";
+  #   };
+
+  #   source_details = {
+  #     source_type = "image";
+  #     source_id = ''''${data.oci_core_images.ubuntu-20-04-arm.images.0.id}'';
+  #   };
+
+  #   metadata.ssh_authorized_keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILCmIz2Selg5eJ77lvpJHgDJiRIOZbucMjDK5zrhTEWK heph@fenrir";
+  #   metadata.user_data = ''''${base64encode(file("./hosts/boot-oci.sh"))}'';
+  # };
   
 }
