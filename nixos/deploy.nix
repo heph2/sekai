@@ -29,7 +29,7 @@ in
     casper = mkNode "casper" "129.152.7.231" true; #ORACLE AMD
     thor = mkNode "thor" "129.152.13.29" true; #ORACLE AMD
     hod = mkNodeARM "hod" "129.152.2.37" true; #ORACLE ARM
-    odin = mkNodeARM "odin" "129.152.0.135" true; #ORACLE ARM
+    odin = mkNodeARM "odin" "129.152.22.136" true; #ORACLE ARM
 
     sp4 = mkNode "sp4" "192.168.1.248" true; #SURFACE PRO
   };

@@ -136,13 +136,22 @@
   };
   
   nix = {
-    buildMachines = [ {
-      hostName = "builder";
-      system = "x86_64-linux";
-      maxJobs = 1;
-      speedFactor = 2;
-      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-    }];
+    buildMachines = [
+      {
+        hostName = "builder";
+        system = "x86_64-linux";
+        maxJobs = 8;
+        speedFactor = 2;
+        supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      }
+      {
+        hostName = "odin";
+        system = "aarch64-linux";
+        maxJobs = 1;
+        speedFactor = 2;
+        supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      }
+    ];
     distributedBuilds = true;
     package = pkgs.nixFlakes;
     extraOptions = ''
