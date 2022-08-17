@@ -40,6 +40,7 @@
     screen
     git
     deploy-rs
+    mg
   ];
 
   # Enable the OpenSSH daemon.
