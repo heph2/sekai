@@ -16,7 +16,10 @@ let
   nixos-sp4 = nixpkgs.lib.makeOverridable nixpkgs-sp4.lib.nixosSystem;
   # make flake inputs accessiable in NixOS
   defaultModules = [
-    { _module.args.inputs = inputs; }
+    {
+      _module.args.self = self;
+      _module.args.inputs = self.inputs;
+    }
     {
       imports = [
         ({pkgs, ...}: {
@@ -24,7 +27,7 @@ let
             "nixpkgs=${pkgs.path}"
             "nur=${nur}"
           ];
-          nix.package = nixpkgs.lib.mkForce nix.packages.x86_64-linux.nix;
+          #nix.package = nixpkgs.lib.mkForce nix.packages.x86_64-linux.nix;
           nix.extraOptions = ''
             experimental-features = nix-command flakes
           '';

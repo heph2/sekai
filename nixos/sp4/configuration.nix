@@ -198,7 +198,7 @@
     rofi-pass
 
     # Languages
-    cargo rustc gcc
+    cargo rustc gcc gnumake go
     (python3.withPackages (p: with p; [
     	pip
 	virtualenv
@@ -231,6 +231,8 @@
 
     # Games
     steam-run
+
+    hello
   ];
 
   ## Enable fusuma for touchpad gestures
