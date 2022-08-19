@@ -13,7 +13,7 @@
 }:
 let
   nixosSystem = nixpkgs.lib.makeOverridable nixpkgs.lib.nixosSystem;
-  nixos-sp4 = nixpkgs.lib.makeOverridable nixpkgs-sp4.lib.nixosSystem;
+  nixos-sp4 = nixpkgs-sp4.lib.makeOverridable nixpkgs-sp4.lib.nixosSystem;
   # make flake inputs accessiable in NixOS
   defaultModules = [
     {
