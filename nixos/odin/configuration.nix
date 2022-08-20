@@ -50,7 +50,7 @@
   networking.firewall.allowedTCPPorts = [ 22 ];
   networking.firewall.allowPing = true;
 
-  nix.autoOptimiseStore = true;
+  nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # This value determines the NixOS release from which the default
