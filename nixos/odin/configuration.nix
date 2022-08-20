@@ -40,7 +40,7 @@
     screen
     git
     deploy-rs
-    mg
+    mg cachix
   ];
 
   # Enable the OpenSSH daemon.
