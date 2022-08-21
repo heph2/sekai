@@ -225,7 +225,7 @@
     nix-direnv direnv home-manager
 
     # Games
-    steam-run
+    steam-run godot
 
     hello
   ];
