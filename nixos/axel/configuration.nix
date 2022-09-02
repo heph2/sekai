@@ -1,8 +1,9 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ./modules/prosody.nix
-    ./modules/acme.nix
+#    ./modules/prosody.nix
+#    ./modules/acme.nix
+    ./modules/dns/bind.nix
   ];
 
   sops.defaultSopsFile = ./secrets/secrets.yaml;
@@ -20,6 +21,8 @@
   environment.systemPackages = with pkgs; [
     dnsutils tcpdump
   ];
+
+  system.stateVersion = "22.11";
 }
 
   

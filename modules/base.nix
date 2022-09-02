@@ -16,4 +16,6 @@
   environment.systemPackages = with pkgs; [
     wget openssh
   ];
+
+  time.timeZone = "Europe/Rome";
 }

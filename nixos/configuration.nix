@@ -35,6 +35,7 @@ let
         })
         ../modules/base.nix
         ../modules/nur.nix
+        ../modules/acme.nix
         sops-nix.nixosModules.sops
       ];
     }
@@ -49,8 +50,6 @@ in
         ./kelpie/configuration.nix
       ] ++ [
         ../modules/base-openstack.nix
-#        ../modules/dns/knot.nix
-	      ../modules/dns/bind.nix
       ] ++ [
         { nixpkgs.overlays = [ nur.overlay ]; }
         ({ pkgs, ... }:
@@ -59,7 +58,10 @@ in
               nurpkgs = import nixpkgs { system = "x86_64-linux"; };
             };
           in {
-            imports = [ nur-no-pkgs.repos.heph2.modules.pounce ];
+            imports = [
+              nur-no-pkgs.repos.heph2.modules.pounce
+              nur-no-pkgs.repos.heph2.modules.bind
+            ];
           })
       ];
   };
@@ -72,8 +74,19 @@ in
         ./axel/configuration.nix
       ] ++ [
         ../modules/base-openstack.nix
-        ../modules/wireguard-client.nix
-        ../modules/dns/knot.nix
+        ../modules/wireguard-client.nix        
+      ] ++ [
+        { nixpkgs.overlays = [ nur.overlay ]; }
+        ({ pkgs, ... }:
+          let
+            nur-no-pkgs = import nur {
+              nurpkgs = import nixpkgs { system = "x86_64-linux"; };
+            };
+          in {
+            imports = [
+              nur-no-pkgs.repos.heph2.modules.bind
+            ];
+          })
       ];
   };
   
