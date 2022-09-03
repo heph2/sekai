@@ -11,6 +11,13 @@
     group = "named";
   };
 
+  environment.etc."bind/zones/pek.mk" = {
+    mode = "0644";
+    source = ./pek.mk.zone;
+    user = "named";
+    group = "named";
+  };
+  
   sops.secrets.knot_tsig = {
     owner = "named";
     mode = "0644";
@@ -35,6 +42,17 @@
          };
       '';
 	  };
+	  zones."pek.mk" = {
+		  name = "pek.mk";
+      file = "/etc/bind/zones/pek.mk";
+		  master = true;
+      slaves = [ "127.0.0.1" "90.147.189.232" ];
+      extraConfig = ''
+         update-policy {
+             grant ddns-key zonesub ANY;
+         };
+      '';
+	  };    
 	};
 
 	networking.firewall = {

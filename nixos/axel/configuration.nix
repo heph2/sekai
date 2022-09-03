@@ -4,9 +4,12 @@
 #    ./modules/prosody.nix
 #    ./modules/acme.nix
     ./modules/dns/bind.nix
+    ./modules/murmur.nix
   ];
 
   sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.secrets.lego-knot-credentials = { };
+  sops.secrets.mumble_pass = { };
   networking = {
     firewall = {
       enable = true;
