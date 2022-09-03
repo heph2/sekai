@@ -9,11 +9,15 @@
 , blog-flake
 , nixos-hardware
 , home-manager
+, neovim-nightly-overlay
 , ...
 }:
 let
   nixosSystem = nixpkgs.lib.makeOverridable nixpkgs.lib.nixosSystem;
   nixos-sp4 = nixpkgs-sp4.lib.makeOverridable nixpkgs-sp4.lib.nixosSystem;
+  overlays = [
+	inputs.neovim-nightly-overlay.overlay
+  ];
   # make flake inputs accessiable in NixOS
   defaultModules = [
     {
@@ -150,6 +154,10 @@ in
 	        home-manager.useUserPackages = true;
 	        home-manager.users.heph = import ./sp4/home.nix;
 	      }
+      ] ++ [
+	{
+	   nixpkgs.overlays = overlays;
+	}
       ];
   };  
 }

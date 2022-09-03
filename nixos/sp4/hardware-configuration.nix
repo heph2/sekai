@@ -15,6 +15,12 @@
       fsType = "vfat";
     };
 
+#  fileSystems."/home/heph/var" =
+#    {
+#      device = "/dev/disk/by-uuid/88e0df37-e8cf-4c23-8abf-d8adf021f3ce";
+#      fsType = "ext4";
+#    };
+
   swapDevices = [ ];
 
   networking.useDHCP = lib.mkDefault true;

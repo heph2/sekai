@@ -49,6 +49,13 @@
 
       neovim = {
 	      enable = true;
+	      package = pkgs.neovim-nightly;
+	      extraPackages = with pkgs; [
+		tree-sitter
+	      ];
+	      plugins = with pkgs.vimPlugins; [
+		vim-which-key
+	      ];
       }; # neovim
 
       mpv = {
