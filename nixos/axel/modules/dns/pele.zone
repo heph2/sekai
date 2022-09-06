@@ -1,0 +1,30 @@
+; pele.zone
+@ IN	SOA oho.pele.	catch@mrkeebs.eu. (
+  	    2022090604
+	    28800
+	    7200
+	    8640000
+	    60
+	    )
+@ IN NS oho.pele.
+
+$TTL 60
+
+$ORIGIN pele.
+
+
+oho.pele. IN A 172.18.0.5
+
+5.0.18.172.in-addr.arpa. IN PTR oho.pele.
+
+sona.pele. IN A 172.18.0.1
+
+foo.pele. IN A 172.18.0.3
+
+1.0.18.172.in-addr-arpa. IN PTR sona.pele.
+
+prometheus.pele. IN CNAME sona.pele.
+
+grafana.pele. in CNAME sona.pele.
+
+router.pele. IN CNAME foo.pele.

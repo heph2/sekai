@@ -5,6 +5,7 @@
     ./modules/dns/bind-slave.nix
     ./modules/wireguard.nix
     ../../modules/base.nix
+    ./modules/monitoring.nix
 #    ./modules/blog.nix
   ];
 
