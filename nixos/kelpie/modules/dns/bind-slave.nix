@@ -23,12 +23,12 @@
 		  master = false; # slave server
       masters = [ "90.147.188.89" ];
 	  };
-    zones."." = {
-      name = ".";
-      file = "/etc/bind/zones/pele";
-      master = false;
-      masters = [ "90.147.188.89" ];
-    };
+    # zones."." = {
+    #   name = ".";
+    #   file = "/etc/bind/zones/pele";
+    #   master = false;
+    #   masters = [ "90.147.188.89" ];
+    # };
 	  zones."pek.mk" = {
 		  name = "pek.mk";
       file = "/etc/bind/zones/pek.mk";
