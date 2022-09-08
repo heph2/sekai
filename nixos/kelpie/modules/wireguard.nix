@@ -36,7 +36,11 @@
           {
             publicKey = "O+qIb83zCnhGvxRQQy1lAxx3bn5Y7OU10KjiZPpVDXc=";
             allowedIPs = [ "172.18.0.5/32" ];
-          } # AXEL          
+          } # AXEL
+          {
+            publicKey = "vmI4qI2YwA1Qt2XUfKOpEQOdoypHoeF0kZ8r96dmz10=";
+            allowedIPs = [ "172.18.0.6/32" ];
+          }
         ];
       }; # WG0
     }; # WIREGUARD

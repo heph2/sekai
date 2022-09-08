@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./wireguard-client.nix
     ./wm.nix
   ];
 
@@ -23,6 +24,11 @@
   # Networking
   networking = {
     hostName = "nixos"; # Define your hostname.
+    nameservers = [
+      "195.10.195.195" # opennic
+      "9.9.9.9" # quad9
+      "90.147.188.89" # ns1.heph.me
+    ];
     networkmanager.enable = true;
   };
 
