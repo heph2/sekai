@@ -24,11 +24,11 @@
   # Networking
   networking = {
     hostName = "nixos"; # Define your hostname.
-    nameservers = [
-      "195.10.195.195" # opennic
-      "9.9.9.9" # quad9
-      "90.147.188.89" # ns1.heph.me
-    ];
+#    nameservers = [
+#      "195.10.195.195" # opennic
+#      "9.9.9.9" # quad9
+#      "90.147.188.89" # ns1.heph.me
+#    ];
     networkmanager.enable = true;
   };
 
@@ -94,6 +94,17 @@
       enable = true;
       drivers = [ pkgs.brlaser ];
     };
+
+    dnsmasq = {
+      enable = true;
+      servers = [
+	"1.1.1.1"
+	"/.pele/90.147.188.89"
+      ];
+      extraConfig = ''
+      no-resolv
+      '';
+    };
   };
 
   # Enable sound
@@ -115,6 +126,10 @@
     ## Bluetooth support
   };
   security.rtkit.enable = true;
+  security.sudo = {
+     enable = true;
+     wheelNeedsPassword = false;
+  };
   programs.light.enable = true;
   programs.gnupg.agent.enable = true;
   programs.steam = {
