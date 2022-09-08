@@ -247,7 +247,7 @@
 
     # CLI Stuff
     git imv zathura ytfzf lm_sensors pass pinentry-curses mpv sshfs
-    texlive.combined.scheme-basic simple-scan evince
+    texlive.combined.scheme-basic simple-scan evince dnsutils
 
     # Audio stuff
     pulseaudio pamixer wob
