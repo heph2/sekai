@@ -65,7 +65,12 @@
              grant ddns-key zonesub ANY;
          };
       '';
-	  };    
+	  };
+    extraConfig = ''
+statistics-channels {
+inet 127.0.0.1 port 8053 allow { 127.0.0.1; };
+};
+    '';
 	};
 
 	networking.firewall = {

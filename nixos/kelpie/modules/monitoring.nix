@@ -33,10 +33,15 @@
           enabledCollectors = [ "systemd" ];
           port = 9002;
         };
-	bind = {
-	  enable = true;
-	  port = 9119;
-	};
+	      bind = {
+	        enable = true;
+	        port = 9119;
+          bindURI = "http://localhost:53/";
+	      };
+        wireguard = {
+          enable = true;
+          port = 9586;
+        };
       };
       scrapeConfigs = [
         {
@@ -51,12 +56,18 @@
             targets = [ "127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}" ];
           }];
         }
-	{
-	  job_name = "bind-slave";
-	  static_configs = [{
-	    targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.bind.port}" ];
-	  }];
-	}
+	      {
+	        job_name = "bind-slave";
+	        static_configs = [{
+	          targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.bind.port}" ];
+	        }];
+	      }
+	      {
+	        job_name = "wireguard";
+	        static_configs = [{
+	          targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.wireguard.port}" ];
+	        }];
+	      }        
       ];
     };
 

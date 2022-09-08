@@ -5,6 +5,7 @@
 #    ./modules/acme.nix
     ./modules/dns/bind.nix
     ./modules/murmur.nix
+    ./modules/restic.nix
   ];
 
   sops.defaultSopsFile = ./secrets/secrets.yaml;
@@ -13,7 +14,7 @@
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 53 80 5281 5280 5222 5269 ];
+      allowedTCPPorts = [ 22 53 80 5281 5280 5222 5269 8000 ];
       allowedUDPPorts = [ 53 ];
       allowPing = true;
     };

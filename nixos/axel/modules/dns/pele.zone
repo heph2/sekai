@@ -1,6 +1,6 @@
 ; pele.zone
 @ IN	SOA oho.pele.	catch@mrkeebs.eu. (
-  	    2022090604
+  	    2022090800
 	    28800
 	    7200
 	    8640000
@@ -25,6 +25,8 @@ foo.pele. IN A 172.18.0.3
 
 prometheus.pele. IN CNAME sona.pele.
 
-grafana.pele. in CNAME sona.pele.
+grafana.pele. IN CNAME sona.pele.
 
 router.pele. IN CNAME foo.pele.
+
+backup.pele. IN CNAME oho.pele.

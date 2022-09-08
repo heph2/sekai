@@ -23,18 +23,23 @@
 		  master = false; # slave server
       masters = [ "90.147.188.89" ];
 	  };
-    # zones."." = {
-    #   name = ".";
-    #   file = "/etc/bind/zones/pele";
-    #   master = false;
-    #   masters = [ "90.147.188.89" ];
-    # };
+    zones."pele" = {
+      name = "pele";
+      file = "/etc/bind/zones/pele";
+      master = false;
+      masters = [ "90.147.188.89" ];
+    };
 	  zones."pek.mk" = {
 		  name = "pek.mk";
       file = "/etc/bind/zones/pek.mk";
 		  master = false; # slave server
       masters = [ "90.147.188.89" ];
-	  };    
+	  };
+    extraConfig = ''
+statistics-channels {
+inet 127.0.0.1 port 8053 allow { 127.0.0.1; };
+};
+    '';
 	};
 
 	networking.firewall = {

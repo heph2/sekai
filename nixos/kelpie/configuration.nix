@@ -6,6 +6,7 @@
     ./modules/wireguard.nix
     ../../modules/base.nix
     ./modules/monitoring.nix
+#    ./modules/backup.nix
 #    ./modules/blog.nix
   ];
 
