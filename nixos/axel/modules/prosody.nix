@@ -33,4 +33,10 @@
     addSSL = true;
     enableACME = true;
   };
+      # format:
+    # RFC2136_NAMESERVER=ns1.heph.me
+    # RFC2136_TSIG_ALGORITHM=hmac-sha256.
+    # RFC2136_TSIG_KEY=ddns-key
+    # RFC2136_TSIG_SECRET="00000000000000000000000000000000000000000000"
+
 }

@@ -1,10 +1,5 @@
 { config, pkgs, lib, nur, ... }:
 {
-  # imports =
-  #   [
-  #     nur.repos.heph2.modules.pounce
-  #   ];
-
   services.pounce = {
     enable = true;
     hostAddress = "0.0.0.0"; # VPN IP

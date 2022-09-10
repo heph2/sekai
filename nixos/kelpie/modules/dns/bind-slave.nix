@@ -35,6 +35,12 @@
 		  master = false; # slave server
       masters = [ "90.147.188.89" ];
 	  };
+    zones."_acme-challenge.heph.me" = {
+      name = "_acme-challenge.heph.me";
+      file = "/etc/bind/zones/_acme-challenge.heph.me";
+      master = false;
+      masters = [ "90.147.188.89" ];
+    };        
     extraConfig = ''
 statistics-channels {
 inet 127.0.0.1 port 8053 allow { 127.0.0.1; };
