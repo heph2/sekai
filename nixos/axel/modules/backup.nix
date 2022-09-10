@@ -2,14 +2,14 @@
 {
   services = {
     restic = {
-      backups."kelpie" = {
+      backups."axel" = {
         initialize = true;
-        repository = "rest:http://backup.pele/kelpie";
+        repository = "rest:http://backup.pele/axel";
         passwordFile = "/root/pssw";
         paths = [
           "/root"
           "/etc/bind"
-          "/var/lib/pounce"
+          "/var/lib/murmur"
           "/var/lib/acme"
         ];
         timerConfig = {

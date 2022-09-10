@@ -6,6 +6,7 @@
     ./modules/dns/bind.nix
     ./modules/murmur.nix
     ./modules/restic.nix
+    ./modules/backup.nix
   ];
 
   sops.defaultSopsFile = ./secrets/secrets.yaml;
