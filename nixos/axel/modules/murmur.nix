@@ -20,7 +20,7 @@
       credentialsFile = config.sops.secrets.lego-knot-credentials.path;
     };
   };
-  
+
   networking.firewall = {
     allowedTCPPorts = [ 64738 ];
     allowedUDPPorts = [ 64738 ];

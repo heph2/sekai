@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-#    ./modules/prosody.nix
-#    ./modules/acme.nix
+    ./modules/prosody.nix
     ./modules/dns/bind.nix
     ./modules/murmur.nix
     ./modules/restic.nix

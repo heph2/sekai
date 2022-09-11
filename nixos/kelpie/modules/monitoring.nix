@@ -36,7 +36,7 @@
 	      bind = {
 	        enable = true;
 	        port = 9119;
-          bindURI = "http://localhost:53/";
+          bindURI = "http://localhost:8053/";
 	      };
         wireguard = {
           enable = true;
