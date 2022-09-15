@@ -12,6 +12,39 @@
       pkgs.cowsay
     ];
   };
+
+  accounts.email.accounts = {
+    ovh = {
+      address = "hephaestus@mrkeebs.eu";
+      imap = {
+        host = "pro2.mail.ovh.net";
+        port = 993;
+        tls.enable = true;
+      };
+      smtp = {
+        host = "pro2.mail.ovh.net";
+        port = 587;
+        tls.enable = true;
+        tls.useStartTls = true;
+      };
+      passwordCommand = "pass Root/IT/OVH-Mail";
+      primary = true;
+      userName = "hephaestus@mrkeebs.eu";
+      mbsync = {
+        enable = true;
+      };
+      offlineimap.enable = true;
+      msmtp.enable = true;
+      notmuch.enable = true;
+      realName = "Marco";
+      signature = {
+        text = ''
+          Test          
+        '';
+        showSignature = "append";
+      };
+    };
+  };
   
   services = {
     fusuma = {
@@ -33,7 +66,18 @@
   };
   
   programs = {
-      home-manager.enable = true;
+    mbsync = {
+      enable = true;
+    };
+    offlineimap.enable = true;
+    msmtp.enable = true;
+    notmuch = {
+      enable = true;
+      hooks = {
+        preNew = "mbsync --all";
+      };
+    };
+    home-manager.enable = true;
       git = {
 	      enable = true;
 	      aliases = {

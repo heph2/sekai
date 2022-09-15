@@ -29,6 +29,9 @@
     blog-flake.url = "github:heph2/blog";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nixos-mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-22.05";
+    };
   };
   outputs = { ... } @ args: import ./outputs.nix args;
 }

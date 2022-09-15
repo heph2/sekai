@@ -1,4 +1,4 @@
-@ 3600 IN SOA ns1.heph.me. ns2.heph.me. 2022091100 7200 3600 86400 3600
+@ 3600 IN SOA ns1.heph.me. ns2.heph.me. 2022091510 7200 3600 86400 3600
 
 $TTL 600
 
@@ -10,7 +10,28 @@ ns2	    300	IN	A	90.147.189.232
 www   	    300	IN	A	90.147.189.232
 dns	    300	IN	A	90.148.189.232
 chat	    300	IN	A	90.147.188.89
+test	    300	IN	A	1.1.1.1
+mail	    300	IN	A	90.147.188.89
+
+; MX
+IN	MX	10 mail.heph.me.
+
+; SPF
+IN	TXT     "v=spf1 a:mail.heph.me -all"
+
+; DKIM
+mail._domainkey	300	IN	TXT	"v=DKIm1"
+
+; DMARC
+_dmarc.heph.me	300	IN	TXT	"v=DMARC1; p=none"
+
+; reverse DNS
+89.188.147.90.in-addr.arpa IN A mail.heph.me.
+
+
+
 
 _acme-challenge 300 IN NS ns1.heph.me.
 _acme-challenge.chat 300 IN NS ns1.heph.me.
 
+		     

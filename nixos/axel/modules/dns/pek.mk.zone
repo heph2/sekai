@@ -1,4 +1,4 @@
-@ 3600 IN SOA ns1.pek.mk. ns2.pek.mk. 2022091102 7200 3600 86400 3600
+@ 3600 IN SOA ns1.pek.mk. ns2.pek.mk. 2022091500 7200 3600 86400 3600
 
 $TTL 600
 
@@ -14,6 +14,10 @@ chat  	    300   IN 	A	90.147.189.89
 conference  300   IN	A	90.147.189.89
 upload	    300	  IN	A 	90.147.189.89
 voice	    300	  IN	A	90.147.188.89
+mail	    300	  IN	A	90.147.188.89
+
+; reverse DNS
+89.188.147.90.in-addr.arpa IN A mail.pek.mk.
 
 _acme-challenge 300 IN NS ns1.heph.me.
 _acme-challenge.chat 300 IN NS ns1.heph.me.

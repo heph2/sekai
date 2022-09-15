@@ -7,6 +7,7 @@
     ../../modules/base.nix
     ./modules/monitoring.nix
     ./modules/backup.nix
+#    ./modules/mail.nix
 #    ./modules/blog.nix
   ];
 

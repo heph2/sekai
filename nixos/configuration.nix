@@ -10,6 +10,7 @@
 , nixos-hardware
 , home-manager
 , neovim-nightly-overlay
+, nixos-mailserver
 , ...
 }:
 let
@@ -52,8 +53,9 @@ in
       defaultModules
       ++ [
         ./kelpie/configuration.nix
-      ] ++ [
         ../modules/base-openstack.nix
+      ] ++ [
+        nixos-mailserver.nixosModule
       ] ++ [
         { nixpkgs.overlays = [ nur.overlay ]; }
         ({ pkgs, ... }:
