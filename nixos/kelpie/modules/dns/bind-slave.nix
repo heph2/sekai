@@ -29,12 +29,42 @@
       master = false;
       masters = [ "90.147.188.89" ];
     };
-	  zones."pek.mk" = {
-		  name = "pek.mk";
-      file = "/etc/bind/zones/pek.mk";
-		  master = false; # slave server
+	  # zones."pek.mk" = {
+		#   name = "pek.mk";
+    #   file = "/etc/bind/zones/pek.mk";
+		#   master = false; # slave server
+    #   masters = [ "90.147.188.89" ];
+	  # };
+    # zones."_acme-challenge.chat.pek.mk" = {
+    #   name = "_acme-challenge.chat.pek.mk";
+    #   file = "/etc/bind/zones/_acme-challenge.chat.pek.mk";
+    #   master = false;
+    #   masters = [ "90.147.188.89" ];
+    # };
+    # zones."_acme-challenge.conference.pek.mk" = {
+    #   name = "_acme-challenge.conference.pek.mk";
+    #   file = "/etc/bind/zones/_acme-challenge.conference.pek.mk";
+    #   master = false;
+    #   masters = [ "90.147.188.89" ];
+    # };    
+    # zones."_acme-challenge.voice.pek.mk" = {
+    #   name = "_acme-challenge.voice.pek.mk";
+    #   file = "/etc/bind/zones/_acme-challenge.voice.pek.mk";
+    #   master = false;
+    #   masters = [ "90.147.188.89" ];
+    # };    
+    # zones."_acme-challenge.pek.mk" = {
+    #   name = "_acme-challenge.pek.mk";
+    #   file = "/etc/bind/zones/_acme-challenge.pek.mk";
+    #   master = false;
+    #   masters = [ "90.147.188.89" ];
+    # };            
+    zones."_acme-challenge.chat.heph.me" = {
+      name = "_acme-challenge.chat.heph.me";
+      file = "/etc/bind/zones/_acme-challenge.chat.heph.me";
+      master = false;
       masters = [ "90.147.188.89" ];
-	  };
+    };            
     zones."_acme-challenge.heph.me" = {
       name = "_acme-challenge.heph.me";
       file = "/etc/bind/zones/_acme-challenge.heph.me";
