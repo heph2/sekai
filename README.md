@@ -27,6 +27,7 @@ terraform's sops [provider](https://registry.terraform.io/providers/carlpett/sop
 
 All the machines are managed using 'deploy-rs' and can be easily deployed
 with:
+
 	$ deploy .#<machine_name> -- --impure
 
 Most of the machines are impure so you must provide the impure flag.
@@ -40,6 +41,7 @@ rocking a Sway/Wayland setup, with almost full touch support.
 I'm currently do not use any common module on it, so the whole configuration is in 'nixos/sp4' directory.
 
 For deploying:
+
 	$ deploy '.#sp4' -- --impure -j0
 
 I'm only using the -j0 flag only when i'm building from the sp4 itself, which has very poor performance in terms of compiling, so i'm building all the stuff directly using the Desktop (which isn't in the flake).
