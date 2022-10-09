@@ -3,6 +3,7 @@
   imports = [
     ./hosts/openstack.nix
     ./hosts/oracle.nix
+    ./hosts/inwx.nix
   ];
   
   ## Enable sops provider

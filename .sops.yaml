@@ -12,18 +12,20 @@ creation_rules:
     key_groups:
       - age:
           - *sekai
+  - path_regex: inwx_secrets.yaml
+    key_groups:
+      - age:
+          - *sekai          
   - path_regex: kelpie/secrets/[^/]+\.yaml$
     key_groups:
       - age:
           - *sekai
           - *server_kelpie
-
   - path_regex: modules/dns/[^/]+\.yaml$
     key_groups:
       - age:
           - *sekai
           - *server_kelpie
-
   - path_regex: axel/secrets/[^/]+\.yaml$
     key_groups:
       - age:

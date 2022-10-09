@@ -126,7 +126,8 @@ in
 
     source_details = {
       source_type = "image";
-      source_id = ''''${data.oci_core_images.ubuntu-20-04-arm.images.0.id}'';
+      source_id = "ocid1.image.oc1.eu-milan-1.aaaaaaaaw7mwwkbcbkkcrsld45zvguterhvvzeivhy5ah62kuqz7i5go5fiq";
+#      source_id = ''''${data.oci_core_images.ubuntu-20-04-arm.images.0.id}'';
      #      source_id = ''''${data.oci_core_images.ol8_arm.images.0.id}'';
      #      source_id = "ocid1.image.oc1.eu-milan-1.aaaaaaaahuqq5jbok3otbmxaum4musc6bezkdh2t6rbucwvj675oyzihm54q";
       boot_volume_size_in_gbs = "95";

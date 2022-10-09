@@ -7,13 +7,14 @@
     ../../modules/base.nix
     ./modules/monitoring.nix
     ./modules/backup.nix
-#    ./modules/mail.nix
-#    ./modules/blog.nix
+    #    ./modules/mail.nix
+    ./modules/blog.nix
   ];
 
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.secrets.wireguard_priv = { };
   sops.secrets.knot_tsig = { };
+  sops.secrets.lego-inwx-credentials = { };
   sops.secrets."pounce/CApem" = { };
   sops.secrets."pounce/key" = { };
   sops.secrets."pounce/cert" = { };
